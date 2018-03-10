@@ -6,6 +6,7 @@ public class Problem1 {
         File temp = new File("DATA11.txt");
         Scanner file = new Scanner(temp);
 
+        //I was lazy and just copied and pasted it. Please use an actual for loop.
         String text1 = file.nextLine();
         String text2 = file.nextLine();
         String text3 = file.nextLine();
@@ -14,23 +15,20 @@ public class Problem1 {
 
         printWord(text1);
         Scanner reader = new Scanner(System.in);
-        System.out.println("Next?");
+        System.out.println("Type '0' to continue");
         int n = reader.nextInt();
         printWord(text2);
-        System.out.println("Next?");
+        System.out.println("Type '0' to continue");
         n = reader.nextInt();
         printWord(text3);
-        System.out.println("Next?");
+        System.out.println("Type '0' to continue");
         n = reader.nextInt();
         printWord(text4);
-        System.out.println("Next?");
+        System.out.println("Type '0' to continue");
         n = reader.nextInt();
         printWord(text5);
         reader.close();
-
-
-
-
+        file.close();
     }
 
     public static void printWord(String text){
