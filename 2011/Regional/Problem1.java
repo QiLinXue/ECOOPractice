@@ -15,32 +15,38 @@ public class Problem1 {
 
         printWord(text1);
         Scanner reader = new Scanner(System.in);
+
         System.out.println("Type '0' to continue");
         int n = reader.nextInt();
         printWord(text2);
+
         System.out.println("Type '0' to continue");
         n = reader.nextInt();
         printWord(text3);
+
         System.out.println("Type '0' to continue");
         n = reader.nextInt();
         printWord(text4);
+
         System.out.println("Type '0' to continue");
         n = reader.nextInt();
         printWord(text5);
-        reader.close();
+
         file.close();
     }
 
     public static void printWord(String text){
-        System.out.println('*'+text+'*');
-        for(int i=0;i<text.length();i++){
-            System.out.print(text.charAt(text.length()-i-1));
+        System.out.println('*'+text+'*'); //First Line
+
+        for(int i=0;i<text.length();i++) //Number of columns
+		{
+            System.out.print(text.charAt(text.length()-i-1)); //First Letter
             for(int j=0;j<text.length();j++){
-                System.out.print('*');
+                System.out.print('*'); //Prints the buffers
             }
-            System.out.print(text.charAt(i));
-            System.out.println();
+            System.out.print(text.charAt(i)); //Last Letter
+            System.out.println(); //Makes New Line
         }
-        System.out.println('*'+text+'*');
+        System.out.println('*'+text+'*'); //Last Line
     }
 }

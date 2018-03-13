@@ -49,16 +49,27 @@ public class Problem3{
         }
     }
 
+	//Decodes an encrypted string
     public static void decode(String encrypted){
         String tempEncrypted = encrypted;
         String finalEncrypted = encrypted;
-        for(int i=encrypted.length()-1;i>-1;i--){
-            tempEncrypted = finalEncrypted;
+
+        for(int i=encrypted.length()-1;i>-1;i--) //Loops through each digit backwards
+		{
+            tempEncrypted = finalEncrypted; //creates a backup of the encrypted message
+
+			//Gets corresponding code for each digit
             int corrCode = codedNumbers.get(i % codedNumbers.size());
+
+			//The position of the character that will be switched
             int secondCharSwitch = (corrCode + i) % encrypted.length();
+
+			//Switches the second character (i=position of original character)
             finalEncrypted = tempEncrypted.substring(0,secondCharSwitch)+
             tempEncrypted.substring(i,i+1)+
             tempEncrypted.substring(secondCharSwitch+1, tempEncrypted.length());
+
+			//Switches the first character
             finalEncrypted = finalEncrypted.substring(0,i)+
             tempEncrypted.substring(secondCharSwitch,secondCharSwitch+1)+
             finalEncrypted.substring(i+1, finalEncrypted.length());
@@ -66,6 +77,7 @@ public class Problem3{
         System.out.println(finalEncrypted);
     }
 
+	//Not needed, identical to decode() but iterates i++ instead of i--
     public static void encode(String encrypted){
         String tempEncrypted = encrypted;
         String finalEncrypted = encrypted;

@@ -89,21 +89,34 @@ class Problem4{
 					}
 				}
 
-				boolean slopePositive = slopeOneOne*slopeTwo > 0;
-				if(slopePositive && slopeOne < slopeTwo)
+				//Tests if the slopes are facing the same direction
+				boolean slopeSameDirection = slopeOneOne*slopeTwo > 0;
+
+				//Tests if both i tree and j tree are on either sides
+				boolean surroundedByTargets = grove[i][0] < tree[0] && grove[j][0] > tree[0];
+
+				//Main tests for ambiguous cases
+				if(slopeSameDirection && slopeOne < slopeTwo && surroundedByTargets)
 				{
-					if(grove[i][0] < tree[0] && grove[j][0] > tree[0] && slopeOne>0 && bottomRightExists){
+					//If slopes are positive and there are trees at the bottom right
+					if(slopeOne>0 && bottomRightExists){
 						return false;
 					}
-					if(grove[i][0] < tree[0] && grove[j][0] > tree[0] && slopeOne<0 && bottomLeftExists){
+
+					//If slopes are negative and there are trees at the bottom left
+					if(slopeOne<0 && bottomLeftExists){
 						return false;
 					}
 				}
-				if(slopePositive && slopeOne > slopeTwo){
-					if(grove[i][0] < tree[0] && grove[j][0] > tree[0] && slopeOne>0 && topLeftExists){
+
+				if(slopeSameDirection && slopeOne > slopeTwo && surroundedByTargets){
+					//If slopes are positive and there are trees at the top left
+					if(slopeOne>0 && topLeftExists){
 						return false;
 					}
-					if(grove[i][0] < tree[0] && grove[j][0] > tree[0] && slopeOne<0 && topRightExists){
+
+					//If slopes are negative and there are trees at the top right
+					if(slopeOne<0 && topRightExists){
 						return false;
 					}
 				}
@@ -114,10 +127,12 @@ class Problem4{
 		return true;
 	}
 
+	//Counts how many trees are on the perimeter
 	static int countPerimeterTrees(int[][] grove){
 		int counter = 0;
 		for(int i=0;i<grove.length;i++){
-			if(isOnPerimeter(grove[i],grove)){
+			if(isOnPerimeter(grove[i],grove))
+			{
 				counter++;
 			}
 		}

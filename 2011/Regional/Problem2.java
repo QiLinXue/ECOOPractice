@@ -15,27 +15,27 @@ public class Problem2 {
             createSum(text1a,text1b,text1c);
             System.out.println();
         }
-        reader.close();
+        file.close();
 
     }
 
     public static void createSum(String line1, String line2, String line3){
         int sum=0;
         for(int i=0;i<line1.length();i+=2){
-            sum = 0;
-            if(line1.charAt(i) == 'x') sum+=1;
-            if(line1.charAt(i+1) == 'x') sum+=10;
-            if(line2.charAt(i) == 'x') sum+=100;
-            if(line2.charAt(i+1) == 'x') sum+=1000;
-            if(line3.charAt(i) == 'x') sum+=10000;
-            if(line3.charAt(i+1) == 'x') sum+=100000;
+			//Sum is an arbitrary value which will assign a easy number to each braille letter
+			sum = 0;
+            if(line1.charAt(i) == 'x') sum+=1; //Top Left
+            if(line1.charAt(i+1) == 'x') sum+=10; //Top Right
+            if(line2.charAt(i) == 'x') sum+=100; //Middle Left
+            if(line2.charAt(i+1) == 'x') sum+=1000; //Midle Right
+            if(line3.charAt(i) == 'x') sum+=10000; //Bottom Left
+            if(line3.charAt(i+1) == 'x') sum+=100000; //Bottom Right
             System.out.print(letterFromSum(sum));
-            //System.out.print(line1.charAt(i));
         }
     }
 
     public static char letterFromSum(int sum){
-        char letter = '*';
+        char letter = '*'; //Used to debug if number assignments go wrong
         switch(sum){
             case 0: letter = ' '; break;
             case 1: letter = 'a'; break;
